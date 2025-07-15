@@ -1,0 +1,1928 @@
+/* Custom CSS Variables */
+:root {
+    --primary-purple: #7B3EBC;
+    --light-purple: #F3EAFB;
+    --dark-text: #2C2C2C;
+    --gray-text: #666666;
+    --light-gray-bg: #F7F7F7;
+    --gradient-start: #AE4DFF;
+    --gradient-end: #7400FF;
+    --red-alert: #FF4B4B; /* For error/alert messages */
+    --green-success: #4CAF50; /* For success messages */
+}
+
+.prompt {
+    font-family: "Prompt", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* ให้สูงอย่างน้อยเท่า viewport */
+}
+
+.page-content {
+  flex: 1; /* ดัน footer ลงล่าง */
+}
+
+/* Base styles for body */
+body {
+    font-family: 'IBM Plex Sans Thai', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--dark-text);
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure footer stays at bottom */
+}
+
+/* Ensure all elements respect box-sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+main {
+    flex: 1; /* Allow main content to grow and push footer down */
+}
+
+/* --- Header Section Styles --- */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 2%;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: relative; /* Needed for absolute positioning of mobile menu */
+    z-index: 1000;
+    width: 100%;
+    max-width: 100vw;
+    overflow: visible;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 0; /* Allow flex item to shrink below content size */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary-purple);
+    text-decoration: none;
+    margin-right: 30px; /* Space between logo and nav menu */
+}
+
+.logo img {
+    height: 80px;
+    margin-right: 10px;
+}
+
+/* Nav menu specific styles for desktop */
+.nav-menu {
+    /* display: flex; Removed from here, handled by ul inside */
+}
+
+.nav-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Make menu items horizontal */
+}
+
+.nav-menu li {
+    margin-right: 25px;
+    position: relative;
+}
+
+.nav-menu li:last-child {
+    margin-right: 0; /* No margin for the last item */
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--dark-text);
+    font-weight: 600;
+    font-size: 15px;
+    transition: color 0.3s ease;
+    padding: 5px 0; /* Add padding for better click area */
+}
+
+.nav-menu a:hover {
+    color: var(--primary-purple);
+}
+
+.nav-menu .new-badge {
+    background-color: #FF5722;
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    position: absolute;
+    top: -8px;
+    right: -25px;
+    white-space: nowrap;
+}
+.nav-menu .sale-badge {
+    background-color: red;
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    position: absolute;
+    top: -8px;
+    right: -15px;
+    white-space: nowrap;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0; /* Prevent right side from shrinking */
+    gap: 8px;
+}
+
+/* --- User Info Section Styles --- */
+.user-info {
+ position: relative;
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ padding: 8px 12px;
+ border: 1px solid #eee;
+ border-radius: 25px;
+ background-color: #f9f9f9;
+ box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+ font-family: Arial, sans-serif;
+ color: var(--dark-text);
+ cursor: pointer;
+ transition: background-color 0.3s ease;
+ min-width: 160px;
+ max-width: 250px;
+ flex-shrink: 0;
+}
+
+.user-info:hover {
+ background-color: #f0f0f0;
+}
+
+.user-info .user-avatar {
+ width: 36px;
+ height: 36px;
+ border-radius: 50%;
+ object-fit: cover;
+ border: 2px solid var(--primary-purple);
+ flex-shrink: 0;
+}
+
+
+.user-details {
+ display: flex;
+ flex-direction: column;
+ flex-grow: 1;
+ min-width: 0;
+ overflow: hidden;
+}
+
+.user-details .user-name {
+ font-weight: 600;
+ font-size: 14px;
+ color: var(--dark-text);
+ white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ line-height: 1.2;
+ max-width: 120px;
+}
+
+
+.user-details .user-uid {
+ font-size: 12px;
+ color: #888;
+ white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ line-height: 1.2;
+ margin-top: 2px;
+ max-width: 120px;
+}
+
+.dropdown-arrow {
+ width: 0;
+ height: 0;
+ border-left: 4px solid transparent;
+ border-right: 4px solid transparent;
+ border-top: 4px solid #888;
+ margin-left: 8px;
+ transition: transform 0.3s ease;
+ flex-shrink: 0;
+}
+
+.user-info.active .dropdown-arrow {
+ transform: rotate(180deg);
+}
+
+/* User Dropdown Menu */
+.user-dropdown {
+ position: absolute;
+ top: 100%;
+ right: 0;
+ background-color: #fff;
+ border: 1px solid #eee;
+ border-radius: 8px;
+ box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+ z-index: 1000;
+ min-width: 200px;
+ display: none;
+ margin-top: 5px;
+}
+
+.user-dropdown.show {
+ display: block;
+}
+
+.user-dropdown ul {
+ list-style: none;
+ margin: 0;
+ padding: 8px 0;
+}
+
+.user-dropdown li {
+ margin: 0;
+}
+
+.user-dropdown a,
+.user-dropdown button {
+ display: flex;
+ align-items: center;
+ width: 100%;
+ padding: 12px 16px;
+ color: var(--dark-text);
+ text-decoration: none;
+ font-size: 14px;
+ font-weight: 500;
+ border: none;
+ background: none;
+ cursor: pointer;
+ transition: background-color 0.3s ease;
+ text-align: left;
+}
+
+.user-dropdown a:hover,
+.user-dropdown button:hover {
+ background-color: #f5f5f5;
+}
+
+.user-dropdown .logout-btn {
+ font-weight: bold !important;
+ color: #dc3545 !important;
+ border-top: 1px solid #eee;
+ padding-top: 12px;
+ display: flex;
+ justify-content: center;
+}
+
+.user-dropdown .logout-btn:hover {
+ background-color: #fff5f5;
+}
+
+/* Language Dropdown */
+.lang-dropdown {
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--gray-text);
+    flex-shrink: 0;
+}
+
+.selected-lang {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+}
+
+.selected-lang:hover {
+    border-color: var(--primary-purple);
+}
+
+.selected-lang img {
+    width: 20px;
+    height: auto;
+    margin-right: 8px;
+}
+
+.selected-lang .arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid var(--gray-text);
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+}
+
+.lang-dropdown.active .arrow-down {
+    transform: rotate(180deg);
+}
+
+.lang-options {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 1;
+    display: none;
+    max-height: 200px; /* Optional: for scrollable dropdown if many items */
+    overflow-y: auto;
+}
+
+.lang-options.show {
+    display: block;
+}
+
+.lang-options li {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    cursor: pointer;
+}
+
+.lang-options li:hover {
+    background-color: var(--light-purple);
+}
+
+.lang-options li img {
+    width: 20px;
+    height: auto;
+    margin-right: 8px;
+}
+
+/* Buttons */
+.login-btn,
+.signup-btn,
+.primary-btn {
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    white-space: nowrap; /* Prevent buttons from wrapping text */
+    text-align: center;
+    display: inline-block; /* Ensure padding works correctly */
+}
+
+.login-btn {
+    background-color: #fff;
+    color: var(--primary-purple);
+    border: 1px solid var(--primary-purple);
+    margin-right: 20px;
+}
+
+.login-btn:hover {
+    background-color: var(--light-purple);
+    color: var(--primary-purple);
+}
+
+.signup-btn, .primary-btn {
+    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+    color: white;
+    border: none;
+}
+
+.signup-btn:hover, .primary-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(116, 0, 255, 0.2);
+}
+
+/* Hamburger Menu Icon */
+.hamburger-menu {
+    display: none;
+    font-size: 28px;
+    color: var(--dark-text);
+    cursor: pointer;
+    margin-left: 10px;
+    padding: 5px;
+    transition: color 0.3s ease;
+    flex-shrink: 0;
+}
+
+.hamburger-menu:hover {
+    color: var(--primary-purple);
+}
+.anon-auth a {
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    white-space: nowrap; /* Prevent buttons from wrapping text */
+    text-align: center;
+    display: none; /* Ensure padding works correctly */
+}
+.anon-auth{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+
+/* --- Hero Section Styles --- */
+.hero-section {
+    background-color: var(--light-gray-bg);
+    padding: 80px 5%; /* Increased padding for better spacing */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 100vw;
+    overflow: hidden;
+}
+
+.hero-content {
+    display: flex;
+    flex-wrap: wrap; /* Allows content to wrap on smaller screens */
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.hero-text {
+    flex: 1;
+    min-width: 300px; /* Minimum width for text block */
+    max-width: 600px; /* Max width for text block */
+    margin-right: 50px; /* Space between text and image */
+    text-align: left; /* Align text to left */
+}
+
+.hero-text .small-text {
+    color: var(--primary-purple);
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 0px;
+    text-transform: uppercase;
+}
+
+.hero-text h1 {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.hero-text p {
+    max-width: 510px;
+    text-align: justify;
+    font-size: 18px;
+    color: var(--gray-text);
+    margin-top: 0px;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    width: max-content;
+    display: flex;
+    gap: 15px;
+}
+
+.hero-buttons a{
+    font-size: 1.2rem;
+}
+
+.hero-image {
+    flex: 1;
+    min-width: 300px; /* Minimum width for image block */
+    max-width: 500px; /* Max width for image block */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bot-character {
+    width: 550px; /* From user instruction */
+    border-radius: 10px; /* Rounded corners for the bot character */
+    height: auto; /* From user instruction */
+    display: block; /* From user instruction */
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+
+/* --- Social Icons --- */
+.social-icons {
+    display: flex;
+    flex-direction: column; /* Stack vertically */
+    position: fixed;
+    right: 20px;
+    bottom: 250px;
+    z-index: 999;
+    background-color: white; /* Optional: add background */
+    border-radius: 10px; /* Optional: rounded corners */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Optional: shadow */
+    padding: 15px; /* Optional: padding */
+    max-width: calc(100vw - 40px); /* Prevent overflow */
+}
+
+.social-icons a {
+    display: block; /* Each icon on its own line */
+    margin: 8px 0; /* Spacing between icons */
+    color: var(--gray-text);
+    font-size: 24px; /* Larger icons */
+    text-align: center;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--primary-purple);
+    transform: scale(1.1);
+}
+
+/* Specific icon colors (optional) */
+.social-icons .fa-facebook-f:hover { color: #3b5998; }
+.social-icons .fa-twitter:hover { color: #00acee; }
+.social-icons .fa-line:hover { color: #00C300; }
+.social-icons .fa-youtube:hover { color: #FF0000; }
+.social-icons .fa-envelope:hover { color: #BB001B; }
+
+
+/* --- Login Modal Styles --- */
+.modal {
+    display: flex;
+    position: fixed; /* Stay in place */
+    z-index: 2000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 450px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+    text-align: center;
+}
+
+.modal-content h2 {
+    color: var(--dark-text);
+    margin-bottom: 25px;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.modal-content button {
+    width: 100%;
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 36px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--dark-text);
+    text-decoration: none;
+}
+
+.login-option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    color: var(--dark-text);
+}
+
+.login-option i {
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+.login-option:hover {
+    background-color: #f5f5f5;
+    border-color: var(--primary-purple);
+}
+
+.login-option.google-option {
+    background-color: #fff;
+    color: var(--dark-text); /* Google's default text color */
+}
+
+.login-option.google-option:hover {
+    background-color: #f1f1f1;
+}
+
+.login-option.google-option i {
+    color: #DB4437; /* Google's red color */
+}
+
+.login-option.line-option {
+    background-color: #00C300; /* LINE green */
+    color: white;
+    border-color: #00C300;
+}
+
+.login-option.line-option:hover {
+    opacity: 0.9;
+    border-color: #00C300; /* Keep border same */
+}
+
+.login-option.line-option i {
+    color: white;
+}
+
+.terms-text {
+    font-size: 13px;
+    color: var(--gray-text);
+    margin-top: 20px;
+    line-height: 1.5;
+}
+
+.terms-text a {
+    color: var(--primary-purple);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.terms-text a:hover {
+    text-decoration: underline;
+}
+
+.login-google{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-google svg{
+    margin-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+/* --- Footer Styles --- */
+.main-footer {
+    background-color: var(--dark-text);
+    color: #fff;
+    padding: 50px 5%;
+    font-size: 14px;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow columns to wrap */
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 30px; /* Space between columns */
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 200px; /* Minimum width for columns before wrapping */
+    margin-bottom: 20px; /* Space for wrapped columns */
+}
+
+.footer-logo img {
+    height: 50px; /* Adjusted logo size for footer */
+    margin-bottom: 15px;
+}
+
+.footer-col p {
+    color: #bbb;
+    margin-top: 15px;
+    line-height: 1.8;
+}
+
+.footer-social-icons {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.footer-social-icons a {
+    color: #fff;
+    font-size: 20px;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.footer-social-icons a:hover {
+    color: var(--primary-purple);
+}
+
+.footer-link-text {
+    display: block; /* Each link on its own line */
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 5px;
+    font-size: 15px;
+    transition: color 0.3s ease;
+}
+.footer-link-text:hover {
+    color: var(--primary-purple);
+}
+
+
+.footer-col h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #fff;
+    white-space: nowrap; /* Prevent heading from wrapping */
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    color: #bbb;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: flex; /* For small-dot icon alignment */
+    align-items: center;
+}
+
+.footer-col ul li a:hover {
+    color: var(--primary-purple);
+}
+
+.small-dot {
+    font-size: 6px;
+    vertical-align: middle;
+    margin-right: 8px;
+    color: #bbb; /* Default color for dots */
+}
+
+.footer-col ul li a:hover .small-dot {
+    color: var(--primary-purple); /* Dot color changes on hover */
+}
+
+.mobile-auth {
+  display: none;
+}
+
+/* --- Responsive Design (Media Queries) --- */
+
+/* Tablet and smaller desktops (992px and below) */
+@media (max-width: 992px) {
+    .desktop-auth {
+        display: none;
+    }
+    .mobile-auth {
+        display: block;
+    }
+    .header {
+        padding: 12px 3%; /* Adjust header padding */
+        gap: 8px;
+    }
+
+    .logo {
+        font-size: 22px;
+        margin-right: 15px;
+    }
+
+    .logo img {
+        height: 60px;
+    }
+
+    .nav-menu { /* Hide regular nav menu on smaller screens */
+        display: none;
+    }
+
+    .hamburger-menu {
+        display: block; /* Show hamburger icon */
+    }
+
+    .header-right {
+        gap: 6px;
+    }
+
+    .mobile-auth{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .user-info {
+        min-width: 140px;
+        max-width: 180px;
+        margin: 20px 5%;
+        padding: 6px 10px;
+        gap: 8px;
+    }
+
+    .logout-btn{
+        padding: 10px 35px;
+        color: white;
+        font-weight: bold;
+        background: linear-gradient(to right, #fd3838, rgb(206, 2, 2));
+        border: none;
+        border-radius: 25px;
+    }
+
+    .user-info .user-avatar {
+        width: 32px;
+        height: 32px;
+    }
+
+    .user-details .user-name {
+        font-size: 13px;
+        max-width: 90px;
+    }
+
+    .user-details .user-uid {
+        font-size: 11px;
+        max-width: 90px;
+    }
+
+    .hamburger-menu {
+        margin-left: 8px;
+        flex-shrink: 0;
+        font-size: 24px;
+    }
+
+    /* Mobile Navigation Menu */
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        border-top: 1px solid #eee;
+        z-index: 999;
+        max-height: 70vh;
+        overflow-y: auto;
+    }
+
+    .nav-menu.show {
+        display: flex;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+    }
+
+    .nav-menu li {
+        margin: 0;
+        width: 100%;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .nav-menu li:last-child {
+        border-bottom: none;
+    }
+
+    .nav-menu a {
+        padding: 15px 20px;
+        display: block;
+        font-size: 16px;
+        font-weight: 500;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .nav-menu a:hover {
+        background-color: var(--light-purple);
+        color: var(--primary-purple);
+    }
+
+    .nav-menu .new-badge,
+    .nav-menu .sale-badge {
+        position: static;
+        margin-left: 8px;
+        display: inline-block;
+    }
+
+    .anon-auth a {
+        padding: 10px 20px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 15px;
+        transition: all 0.3s ease;
+        white-space: nowrap; /* Prevent buttons from wrapping text */
+        text-align: center;
+        display: inline-block; /* Ensure padding works correctly */
+    }
+    .anon-login{
+        border: solid 2px var(--primary-purple);
+    }
+    .anon-signup{
+        background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+        color: white !important;
+        border: none;
+    }
+    .anon-auth{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 15px;
+        gap: 35px;
+    }
+
+    .hero-section {
+        padding: 60px 3%;
+        overflow: hidden;
+    }
+
+    .hero-content {
+        flex-direction: column; /* Text above image on smaller screens */
+        text-align: center;
+        padding: 0;
+        margin: 0;
+    }
+
+    .hero-text {
+        margin-right: 0;
+        margin-bottom: 30px; /* Space between text and image */
+        max-width: 100%; /* Full width for text */
+        padding: 0 10px;
+        order: 1; /* Text first */
+    }
+
+    .hero-text h1 {
+        font-size: 38px;
+        word-wrap: break-word;
+    }
+
+    .hero-text p {
+        font-size: 16px;
+        word-wrap: break-word;
+    }
+
+    .hero-buttons {
+        justify-content: center; /* Center buttons */
+        flex-wrap: wrap;
+    }
+
+    .hero-image {
+        margin-bottom: 20px;
+        max-width: 100%; /* Full width for image */
+        padding: 0 10px;
+        order: 2; /* Image second */
+    }
+
+    .bot-character {
+        width: 60%; /* Adjust bot character size on tablet */
+        max-width: 100%;
+        height: auto;
+    }
+
+    .social-icons {
+        right: 10px;
+        bottom: 200px;
+        padding: 10px;
+    }
+
+    .footer-container {
+        flex-direction: column; /* Stack footer columns */
+        align-items: center; /* Center footer columns */
+        text-align: center;
+    }
+
+    .footer-col {
+        min-width: unset; /* Remove min-width restriction */
+        width: 100%; /* Full width for stacked columns */
+        margin-bottom: 30px;
+    }
+
+    .footer-col h3 {
+        text-align: center;
+    }
+
+    .footer-col ul {
+        align-items: center; /* Center list items */
+    }
+
+    .footer-col ul li a {
+        justify-content: center; /* Center list item content */
+    }
+
+    .footer-social-icons {
+        justify-content: center; /* Center social icons in footer */
+    }
+}
+
+/* Mobile specific styles (768px and below) */
+@media (max-width: 768px) {
+    .header {
+        padding: 10px 15px;
+        gap: 6px;
+    }
+
+    .logo {
+        font-size: 20px;
+        margin-right: 10px;
+    }
+
+    .logo img {
+        height: 45px;
+    }
+
+    .lang-dropdown {
+        font-size: 14px;
+    }
+
+    .selected-lang {
+        padding: 6px 8px;
+    }
+
+    .selected-lang img {
+        width: 18px;
+    }
+
+    .login-btn,
+    .signup-btn {
+        padding: 8px 16px;
+        font-size: 13px;
+        white-space: nowrap;
+    }
+    
+    .header-right {
+        gap: 4px;
+    }
+
+    .user-info {
+        min-width: 120px;
+        max-width: 150px;
+        padding: 6px 8px;
+        font-size: 12px;
+        gap: 6px;
+    }
+
+    .user-info .user-avatar {
+        width: 28px;
+        height: 28px;
+    }
+
+    .user-details .user-name {
+        font-size: 12px;
+        max-width: 70px;
+    }
+
+    .user-details .user-uid {
+        font-size: 10px;
+        max-width: 70px;
+    }
+
+    .user-dropdown {
+        min-width: 160px;
+        right: -10px;
+    }
+
+    .user-dropdown a,
+    .user-dropdown button {
+        padding: 10px 14px;
+        font-size: 13px;
+    }
+
+    .hamburger-menu {
+        font-size: 20px;
+        margin-left: 6px;
+        padding: 4px;
+    }
+
+    .hero-section {
+        padding: 40px 20px; /* Smaller padding */
+        overflow: hidden;
+    }
+
+    .hero-content {
+        flex-direction: column; /* Text above image */
+    }
+
+    .hero-text {
+        order: 1; /* Text first */
+        margin-bottom: 25px;
+    }
+
+    .hero-image {
+        order: 2; /* Image second */
+        margin-bottom: 15px;
+    }
+
+    .hero-text h1 {
+        font-size: 32px; /* Smaller hero heading */
+        word-wrap: break-word;
+        hyphens: auto;
+    }
+
+    .hero-text p {
+        font-size: 15px;
+        word-wrap: break-word;
+    }
+
+    .hero-buttons {
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 10px;
+        align-items: center; /* Center stacked buttons */
+        width: 100%;
+    }
+
+    .primary-btn, .login-btn.hero-btn { /* Apply full width to stacked buttons */
+        width: 80%;
+        max-width: 250px;
+        text-align: center;
+    }
+
+    .bot-character {
+        width: 80%; /* Revert to 80% as per user instruction on smaller mobile */
+        max-width: 100%;
+        height: auto;
+    }
+    
+    .social-icons {
+        right: 5px;
+        bottom: 150px;
+        padding: 8px;
+        max-width: calc(100vw - 10px);
+    }
+
+    .modal-content {
+        padding: 20px;
+    }
+
+    .modal-content h2 {
+        font-size: 24px;
+    }
+
+    .login-option {
+        padding: 10px 15px;
+        font-size: 15px;
+    }
+
+    .login-option i {
+        margin-right: 10px;
+        font-size: 18px;
+    }
+
+    .footer-col h3 {
+        font-size: 16px;
+    }
+
+    .footer-col ul li a {
+        font-size: 13px;
+    }
+}
+
+/* Smaller mobile devices (480px and below) */
+@media (max-width: 480px) {
+    .header {
+        padding: 8px 12px;
+        gap: 4px;
+    }
+
+    .logo {
+        font-size: 18px;
+        margin-right: 8px;
+    }
+
+    .logo img {
+        height: 40px;
+    }
+
+    .lang-dropdown {
+        font-size: 13px;
+    }
+
+    .selected-lang {
+        padding: 4px 6px;
+    }
+
+    .selected-lang img {
+        width: 16px;
+    }
+
+    .selected-lang span {
+        display: none; /* Hide text, show only flag */
+    }
+
+    .login-btn,
+    .signup-btn {
+        padding: 6px 10px;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+    
+    .header-right {
+        gap: 3px;
+    }
+
+    .user-info {
+        min-width: 100px;
+        max-width: 130px;
+        padding: 5px 8px;
+        gap: 4px;
+    }
+
+    .user-info .user-avatar {
+        width: 26px;
+        height: 26px;
+    }
+
+    .user-details .user-name {
+        font-size: 11px;
+        max-width: 60px;
+    }
+
+    .user-details .user-uid {
+        font-size: 9px;
+        max-width: 60px;
+    }
+
+    .dropdown-arrow {
+        border-left: 3px solid transparent;
+        border-right: 3px solid transparent;
+        border-top: 3px solid #888;
+        margin-left: 2px;
+    }
+
+    .user-dropdown {
+        min-width: 140px;
+        right: -15px;
+    }
+
+    .user-dropdown a,
+    .user-dropdown button {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .hamburger-menu {
+        font-size: 18px;
+        margin-left: 4px;
+        padding: 3px;
+    }
+
+    .hero-section {
+        padding: 30px 15px;
+        overflow: hidden;
+    }
+
+    .hero-content {
+        flex-direction: column; /* Text above image */
+    }
+
+    .hero-text {
+        order: 1; /* Text first */
+        margin-bottom: 20px;
+    }
+
+    .hero-image {
+        order: 2; /* Image second */
+        margin-bottom: 10px;
+    }
+
+    .hero-text h1 {
+        font-size: 28px;
+        word-wrap: break-word;
+        hyphens: auto;
+        line-height: 1.3;
+    }
+
+    .hero-text p {
+        font-size: 14px;
+        word-wrap: break-word;
+        line-height: 1.5;
+    }
+    
+    .hero-text {
+        padding: 0 5px;
+    }
+    
+    .hero-image {
+        padding: 0 5px;
+    }
+    
+    .social-icons {
+        position: static;
+        margin: 20px auto;
+        flex-direction: row;
+        justify-content: center;
+        right: auto;
+        bottom: auto;
+        width: fit-content;
+        max-width: 90%;
+    }
+    
+    .social-icons a {
+        margin: 0 8px;
+    }
+
+    .footer-container {
+        gap: 20px;
+    }
+    .footer-col h3 {
+        text-align: left; /* Re-align footer headings to left on smallest screens for readability */
+    }
+    .footer-col ul {
+        align-items: flex-start; /* Re-align footer list items to left */
+    }
+    .footer-col ul li a {
+        justify-content: flex-start; /* Re-align footer list item content to left */
+    }
+    .footer-social-icons {
+        justify-content: flex-start; /* Re-align footer social icons to left */
+    }
+    .footer-link-text {
+        text-align: left; /* Re-align footer link text to left */
+    }
+}
+
+/* --- API Key Section Styles --- */
+.api-key-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 5%; /* Adjust padding as needed */
+    background-color: var(--light-gray-bg);
+    min-height: 400px; /* Ensure it takes up some vertical space */
+}
+
+.api-key-card {
+    position: relative;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+}
+
+.api-key-card h2 {
+    font-size: 32px;
+    color: var(--dark-text);
+    margin-top: 10px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.api-key-card p {
+    font-size: 16px;
+    color: var(--gray-text);
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.api-key-card .api-docs-link {
+    color: var(--primary-purple);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.api-key-card .api-docs-link:hover {
+    color: var(--gradient-end);
+    text-decoration: underline;
+}
+
+.api-key-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space out elements */
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.api-key-box input[type="text"] {
+    flex-grow: 1; /* Allow input to take up available space */
+    padding: 8px 10px;
+    border: none;
+    background: none;
+    font-family: 'IBM Plex Sans Thai', monospace; /* Use monospace for keys */
+    font-size: 16px;
+    color: var(--dark-text);
+    outline: none;
+    cursor: text; /* Indicate it's selectable text */
+    min-width: 150px; /* Ensure it doesn't get too small */
+    word-break: break-all; /* Break long words if necessary */
+}
+
+.api-key-box .icon-button {
+    background: none;
+    border: none;
+    color: var(--gray-text);
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 10px; /* Space between input and buttons, and between buttons */
+    transition: color 0.3s ease, transform 0.3s ease;
+    padding: 5px; /* Increase click area */
+}
+
+.api-key-box .icon-button:hover {
+    color: var(--primary-purple);
+    transform: scale(1.1);
+}
+
+.api-key-box .icon-button:active {
+    transform: scale(0.95);
+}
+
+.copy-message {
+    color: var(--green-success);
+    font-size: 14px;
+    margin-top: 10px;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease-in-out;
+    display: block; /* Ensure it takes its own line */
+    overflow: hidden; /* Hide overflow when height is 0 */
+}
+
+.copy-message.show {
+    opacity: 1;
+    height: auto; /* Expand height when shown */
+}
+
+/* Responsive adjustments for API Key Section */
+@media (max-width: 768px) {
+    .api-key-container {
+        padding: 40px 3%;
+    }
+
+    .api-key-card {
+        padding: 30px;
+    }
+
+    .api-key-card h2 {
+        font-size: 28px;
+    }
+
+    .api-key-box {
+        flex-direction: column; /* Stack input and buttons on smaller screens */
+        align-items: stretch; /* Stretch items to full width */
+        padding: 15px;
+    }
+
+    .api-key-box input[type="text"] {
+        margin-bottom: 15px; /* Space between input and buttons */
+        text-align: center; /* Center text in input */
+        padding: 12px 10px; /* Larger padding for easier tap */
+        font-size: 15px;
+    }
+
+    .api-key-box .icon-button {
+        margin: 5px 0; /* Adjust margin for stacked buttons */
+        width: 100%; /* Full width for buttons */
+        padding: 12px; /* Larger padding for easier tap */
+        font-size: 22px;
+        background-color: #f7f7f7; /* Light background for buttons */
+        border-radius: 8px; /* Rounded corners for buttons */
+    }
+}
+
+@media (max-width: 480px) {
+    .api-key-card {
+        padding: 25px 20px;
+    }
+
+    .api-key-card h2 {
+        font-size: 24px;
+    }
+
+    .api-key-card p {
+        font-size: 15px;
+    }
+
+    .api-key-box input[type="text"] {
+        font-size: 14px;
+        padding: 10px 8px;
+    }
+    .api-key-box .icon-button {
+        font-size: 20px;
+        padding: 10px;
+    }
+}
+
+/* --- Email Login Modal Specific Styles (Building upon existing .modal) --- */
+
+/* Adjusting modal content for the new login form */
+.modal-content {
+    /* Keep existing styles like background-color, padding, border-radius, max-width, etc. */
+    /* Add any new styles or override existing ones as needed for this specific layout */
+    padding: 40px; /* Slightly more padding for email login */
+    max-width: 450px; /* Adjust max-width if needed */
+}
+
+.modal-title {
+    font-size: 32px; /* From image */
+    font-weight: 700;
+    color: var(--primary-purple); /* Assuming this is the purple color from the image */
+    text-align: center;
+    margin-bottom: 30px; /* Space below title */
+}
+
+/* Input Group Styles */
+.email-login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between input groups */
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 0; /* Managed by gap in form */
+}
+
+.input-group label {
+    position: absolute;
+    top: 15px; /* Adjust based on input padding */
+    left: 15px;
+    font-size: 16px;
+    color: var(--gray-text);
+    transition: all 0.2s ease-out;
+    pointer-events: none; /* Make sure label doesn't block clicks on input */
+    background-color: #fff; /* To cover the border line when label moves up */
+    padding: 0 5px;
+    z-index: -1; /* Ensure label is above input when floating */
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    color: var(--dark-text);
+    outline: none;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    position: relative; /* For label z-index */
+    background-color: transparent; /* Ensure background is transparent for label to work */
+}
+
+.input-group input:focus {
+    border-color: var(--primary-purple);
+}
+
+/* Floating Label Effect */
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+    top: -10px; /* Move label above the input */
+    font-size: 13px;
+    color: var(--primary-purple);
+    left: 10px; /* Adjust left position when floating */
+    z-index: 2; /* Make sure it's above input and placeholder */
+}
+
+
+/* Password Toggle Icon */
+.password-group {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--gray-text);
+    font-size: 18px;
+    transition: color 0.3s ease;
+    z-index: 2; /* Ensure it's above input */
+}
+
+.toggle-password:hover {
+    color: var(--dark-text);
+}
+
+
+/* Remember me & Forgot Password */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 30px; /* Space before Sign in button */
+}
+
+/* Custom Checkbox */
+.checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 28px; /* Space for the custom checkbox */
+    margin-bottom: 0;
+    cursor: pointer;
+    font-size: 15px;
+    color: var(--gray-text);
+    user-select: none;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background-color: var(--primary-purple);
+    border-color: var(--primary-purple);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox-container .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.forgot-password {
+    color: var(--primary-purple);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: text-decoration 0.3s ease;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* Sign In Button */
+.sign-in-submit-btn {
+    width: 100%;
+    padding: 12px 20px; /* Slightly larger padding for form buttons */
+    margin-top: 10px;
+    font-size: 18px; /* Larger font size for main action button */
+    border-radius: 25px;
+    /* Uses existing .primary-btn styles for gradient */
+    opacity: 0.5; /* Default to disabled/inactive state */
+    pointer-events: none; /* Make it unclickable by default */
+    cursor: not-allowed;
+}
+
+/* Enable button when form is valid (requires JS) */
+.sign-in-submit-btn.active {
+    opacity: 1;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+
+/* Divider "OR" */
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 30px 0; /* Space above and below divider */
+    color: var(--gray-text);
+    font-size: 15px;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #eee;
+}
+
+.divider:not(:empty)::before {
+    margin-right: .25em;
+}
+
+.divider:not(:empty)::after {
+    margin-left: .25em;
+}
+
+
+/* Social Login Options (existing styles apply, but arrange them) */
+.social-login-options {
+    display: flex;
+    justify-content: center; /* Center the buttons */
+    gap: 15px; /* Space between social login buttons */
+    margin-bottom: 30px; /* Space before signup prompt */
+}
+
+/* Adjustments for existing .login-option to fit side-by-side */
+.social-login-options .login-option {
+    flex: 1; /* Allow them to grow and take equal space */
+    max-width: 180px; /* Max width to prevent them from becoming too wide */
+    padding: 12px 15px; /* Adjust padding for better look */
+    font-size: 16px;
+}
+
+.social-login-options .login-option i {
+    font-size: 20px; /* Adjust icon size */
+}
+
+
+/* Sign up Prompt */
+.signup-prompt {
+    font-size: 16px;
+    color: var(--dark-text);
+    text-align: center;
+    margin-top: 20px;
+}
+
+.signup-link {
+    color: #4A90E2; /* Blue color for sign up link from image */
+    text-decoration: none;
+    font-weight: 600;
+    transition: text-decoration 0.3s ease;
+}
+
+.signup-link:hover {
+    text-decoration: underline;
+}
+
+/* --- Responsive adjustments for Email Login Modal --- */
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 30px;
+    }
+
+    .modal-title {
+        font-size: 28px;
+    }
+
+    .email-login-form {
+        gap: 15px;
+    }
+
+    .form-options {
+        flex-direction: column; /* Stack remember me and forgot password */
+        align-items: flex-start; /* Align stacked items to start */
+        gap: 10px; /* Space between stacked options */
+        margin-bottom: 20px;
+    }
+
+    .social-login-options {
+        flex-direction: column; /* Stack social login buttons */
+        gap: 10px;
+        align-items: center; /* Center stacked buttons */
+    }
+
+    .social-login-options .login-option {
+        max-width: 250px; /* Adjust max-width for stacked buttons */
+        width: 80%; /* Make them take up most of the width */
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 25px 20px;
+    }
+
+    .modal-title {
+        font-size: 24px;
+    }
+
+    .input-group label {
+        font-size: 14px;
+    }
+
+    .input-group input {
+        font-size: 14px;
+        padding: 12px 12px;
+    }
+
+    .input-group input:focus + label,
+    .input-group input:not(:placeholder-shown) + label {
+        font-size: 12px;
+        top: -8px;
+    }
+
+    .checkbox-container, .forgot-password {
+        font-size: 14px;
+    }
+
+    .sign-in-submit-btn {
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+
+    .divider {
+        margin: 20px 0;
+        font-size: 14px;
+    }
+
+    .social-login-options .login-option {
+        font-size: 15px;
+        padding: 10px 12px;
+    }
+    .social-login-options .login-option i {
+        font-size: 18px;
+    }
+
+    .signup-prompt {
+        font-size: 15px;
+    }
+}
+
